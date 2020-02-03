@@ -1,0 +1,41 @@
+.heading {
+  font-family: "Shojumaru", cursive;
+  text-align: center;
+  align-items: center;
+  color: black;
+}
+
+.login-page-login-h2 {
+  padding-top: 50px;
+}
+
+.login-page-header {
+  height: 125px;
+  padding-top: 50px;
+  background-color: #88220b;
+  margin-top: 0px;
+}
+
+.login-page-login {
+  margin-right: 25px;
+}
+
+.login-page-register {
+  margin-left: 25px;
+}
+
+.login-page-heading {
+  margin-top: 35px;
+}
+
+.login-page-username {
+  margin-right: 15px;
+}
+
+.login-page-password {
+  margin-right: 15px;
+}
+
+.login-page-submit {
+  background-color: #c02f0e;
+}
