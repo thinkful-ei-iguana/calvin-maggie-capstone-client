@@ -95,7 +95,7 @@ class RegistrationForm extends Component {
           </Button>
           {' '}
           <br />
-          <Link to='/login'>Already have an account?</Link>
+          {/* <Link to='/login'>Already have an account?</Link> */}
         </footer>
       </form>
     )

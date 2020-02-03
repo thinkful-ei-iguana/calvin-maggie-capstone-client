@@ -17,6 +17,7 @@
 
 #sign-up-heading {
   font-size: 40px;
+  font-family: "Shojumaru", cursive;
 }
 
  /* RegistrationForm.css */
@@ -40,6 +41,8 @@
   margin-top: 10px;
   font-size: 16px;
   border-radius: 3px;
+  background-color: #c02f0e;
+  font-family: "Shojumaru", cursive;
 }
 
 Label {

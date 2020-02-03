@@ -5,6 +5,10 @@
   color: black;
 }
 
+h1 {
+  font-size: 40px;
+}
+
 .login-page-login-h2 {
   padding-top: 50px;
 }
@@ -25,7 +29,7 @@
 }
 
 .login-page-heading {
-  margin-top: 35px;
+  margin-top: 30px;
 }
 
 .login-page-username {
@@ -38,4 +42,5 @@
 
 .login-page-submit {
   background-color: #c02f0e;
+  font-size: 16px;
 }
