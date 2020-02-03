@@ -1,3 +1,24 @@
 .login-page-link {
   text-decoration: none;
 }
+
+.logged-in-user {
+  color: black;
+  font-size: x-large;
+  font-weight: 700;
+}
+
+.log-out-user {
+  border-radius: 3px;
+  border: outset silver 3px;
+  background-color: #c02f0e;
+  width: 70.8px;
+  text-align: center;
+  height: 28px;
+  margin-top: 10px;
+}
+
+.log-out-user-link {
+  text-decoration: none;
+  color: black;
+}

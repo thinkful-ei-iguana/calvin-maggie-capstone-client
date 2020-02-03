@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+import "./DashboardRoute.css";
 
 class DashboardRoute extends Component {
   render() {
@@ -6,15 +7,25 @@ class DashboardRoute extends Component {
       <section>
         <section id="dashboard-container">
           <h2>Calvin is learning Maori!</h2>
-          <button type="submit">Let's learn!</button>
+          <button className="button-lets-learn" type="submit">
+            Let's learn!
+          </button>
           <ul>
             <h4>Words to practice:</h4>
-            <li>aroha <br />correct attempts:9 incorrect attempts: 2</li>
-            <li>Kia ora <br />correct attempts:8 incorrect attempts: 3</li>
-            <li>mana <br />correct attempts:6 incorrect attempts: 5</li>
+            <li>
+              aroha <br />
+              correct attempts:9 incorrect attempts: 2
+            </li>
+            <li>
+              Kia ora <br />
+              correct attempts:8 incorrect attempts: 3
+            </li>
+            <li>
+              mana <br />
+              correct attempts:6 incorrect attempts: 5
+            </li>
           </ul>
           <section class="stats">
-
             <p>Total score: 46</p>
           </section>
         </section>
@@ -23,4 +34,4 @@ class DashboardRoute extends Component {
   }
 }
 
-export default DashboardRoute
+export default DashboardRoute;
