@@ -46,14 +46,8 @@ class DashboardRoute extends Component {
               {context => ( */}
         {/* add the following commented out lines into the line above as appropriate, this is only for testing purposes */}
         <section id="dashboard-container">
-          <ul>
-            <li>
-              <h2>Test language 1</h2>
-              <h4 id="welcome-message">original 1</h4>
-              <span className="correct-answers">correct answer count: 0</span>
-            </li>
-          </ul>
-          {/* {this.context.user.name} is learning Maori! */}
+          <h2>{this.context.user.name} is learning Maori!</h2>
+          <h4 id="welcome-message">original 1</h4>
           <Link to="/learn" id="button-lets-learn" type="submit">
             <div id="learn-button-text">Start practicing</div>
             {/* Let's learn! */}
@@ -61,7 +55,9 @@ class DashboardRoute extends Component {
           <h3 id="words-header-dashboard">Words to practice</h3>
           {/* Words that you're learning: */}
           {/* <WordsToPractice user={user} context={context} /> */}
+
           <WordsToPractice words={words} />
+
           <section className="stats">
             <p id="total-score-dashboard">'Total correct answers: 7'</p>
             {/* Total score: */}
@@ -70,7 +66,7 @@ class DashboardRoute extends Component {
         {/* )}
             </Context.Consumer>
           )}
-        </UserContext.Consumer> */}
+        </UserContext.Consumer> */}{" "}
       </section>
     );
   }

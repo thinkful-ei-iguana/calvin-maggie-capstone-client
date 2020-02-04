@@ -16,14 +16,14 @@ class WordsToPractice extends Component {
     let wordArrToRender = [];
     for (let i = 0; i < wordArr.length; i++) {
       wordArrToRender.push(
-        <div className="dashboard-individual-word-container">
-          <p className="word-dashboard">{wordArr[i].original}</p>
+        <li className="dashboard-individual-word-container">
+          <h4 className="word-dashboard">{wordArr[i].original}</h4>
           <p className="attempts-dashboard">
-            correct attempts:
+            correct answer count: {wordArr[i].correct_count}
             <br />
-            incorrect attempts:
+            incorrect answer count: {wordArr[i].incorrect_count}
           </p>
-        </div>
+        </li>
       );
     }
 
@@ -37,7 +37,9 @@ class WordsToPractice extends Component {
     // console.log('context context: ', this.props.context);
     return (
       <section id="words-to-practice-container">
-        <div id="list-of-words-and-attempts">{this.renderWords()}</div>
+        <ul>
+          <div id="list-of-words-and-attempts">{this.renderWords()}</div>
+        </ul>
       </section>
     );
   }
