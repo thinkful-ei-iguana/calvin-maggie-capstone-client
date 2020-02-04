@@ -46,14 +46,13 @@ class DashboardRoute extends Component {
               {context => ( */}
         {/* add the following commented out lines into the line above as appropriate, this is only for testing purposes */}
         <section id="dashboard-container">
-          <h2>{this.context.user.name} is learning Maori!</h2>
-          <h4 id="welcome-message">original 1</h4>
+          <h2 id="welcome-message">
+            {this.context.user.name} is learning Maori!
+          </h2>
           <Link to="/learn" id="button-lets-learn" type="submit">
             <div id="learn-button-text">Start practicing</div>
-            {/* Let's learn! */}
           </Link>
-          <h3 id="words-header-dashboard">Words to practice</h3>
-          {/* Words that you're learning: */}
+          <h4 id="words-header-dashboard">Words that you're learning:</h4>
           {/* <WordsToPractice user={user} context={context} /> */}
 
           <WordsToPractice words={words} />
