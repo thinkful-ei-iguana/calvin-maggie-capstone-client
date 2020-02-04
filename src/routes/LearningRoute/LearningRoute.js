@@ -1,10 +1,16 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import NextWord from '../../components/Learning/NextWord';
+import Result from '../../components/Learning/Result';
+
 
 class LearningRoute extends Component {
+
+
   render() {
     return (
       <section>
-        implement and style me
+        <NextWord />
+        {/* <Result /> */}
       </section>
     );
   }

@@ -1,0 +1,65 @@
+/* LearningRoute.js */
+
+/* NextWord.js */
+
+#button-learning-show-result {
+  color: black;
+  background-color: #c02f0e;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 4px;
+}
+
+#button-learning-show-result-text {
+  margin: 4px;
+}
+
+#translate-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#translation-guess-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#translation-input {
+  margin-right: 35px;
+  padding: 6px;
+  width: 200px;
+  margin-top: 5px;
+  margin-bottom: 40px;
+}
+
+#learning-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+h5 {
+  margin-bottom: 0px;
+  font-size: 18px;
+}
+#total-score-learning {
+  font-size: 22px;
+}
+
+/* Result.js */
+
+#button-learning-next {
+  color: black;
+  background-color: #c02f0e;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 4px;
+}
+
+#button-learning-next-text {
+  margin: 4px;
+}

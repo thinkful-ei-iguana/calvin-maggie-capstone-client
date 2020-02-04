@@ -6,19 +6,29 @@
   color: black;
   font-size: x-large;
   font-weight: 700;
+  margin-bottom: 15px;
+  margin-right: 10px;
 }
 
 .log-out-user {
-  border-radius: 3px;
-  border: outset silver 3px;
-  background-color: #c02f0e;
-  width: 70.8px;
+  /* width: 70.8px;
   text-align: center;
-  height: 28px;
-  margin-top: 10px;
+  height: 28px; */
+  margin-bottom: 10px;
+  display: inline-block;
+  float: right;
+  margin-top: -110px;
 }
 
+
 .log-out-user-link {
+  border-radius: 3px;
+  border: outset silver 3px;
+  background-color: white;
   text-decoration: none;
   color: black;
+  padding: 5px;
+  font-weight: bold;
+  font-size: 18px;
+
 }

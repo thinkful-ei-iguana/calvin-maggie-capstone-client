@@ -20,7 +20,9 @@
   font-size: 20px;
   margin-top: 25px;
   margin-bottom: 20px;
+  border: 3px outset silver;
   border-radius: 4px;
+  text-decoration: none;
 }
 
 #words-header-dashboard {

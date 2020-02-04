@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import WordsToPractice from "../../components/Dashboard/WordsToPractice";
-import UserContext from "../../contexts/UserContext";
-import Context from "../../contexts/Context";
-import Button from '../../components/Button/Button';
+import WordsToPractice from '../../components/Dashboard/WordsToPractice';
+import UserContext from '../../contexts/UserContext';
+import Context from '../../contexts/Context';
+import { Link } from 'react-router-dom';
 import config from '../../config'
 import TokenService from '../../services/token-service'
 
@@ -46,9 +46,10 @@ class DashboardRoute extends Component {
               {context => ( */}
         <section id="dashboard-container">
           <h2 id="welcome-message">{this.context.user.name} is learning Maori!</h2>
-          <Button
+          <Link
+            to='/learn'
             id="button-lets-learn"
-            type="submit"><div id="learn-button-text">Let's learn!</div></Button>
+            type="submit"><div id="learn-button-text">Let's learn!</div></Link>
           <h3 id="words-header-dashboard">Words that you're learning:</h3>
           {/* <WordsToPractice user={user} context={context} /> */}
           <WordsToPractice words={words} />
