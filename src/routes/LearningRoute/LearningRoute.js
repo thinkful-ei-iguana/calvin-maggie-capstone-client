@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import NextWord from '../../components/Learning/NextWord';
-import Result from '../../components/Learning/Result';
 
 
 class LearningRoute extends Component {

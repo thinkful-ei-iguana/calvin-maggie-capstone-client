@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import Context from "../../contexts/Context";
-import LearningService from '../../services/learning-service';
+// import Context from "../../contexts/Context";
+// import LearningService from '../../services/learning-service';
 import Button from '../../components/Button/Button';
+import { Link } from 'react-router-dom';
 import Result from "./Result";
 
 // import "../../routes/DashboardRoute/DashboardRoute.css";
@@ -61,6 +62,10 @@ class NextWord extends Component {
             type="submit"
             onClick={this.showResult}><div id="button-learning-show-result-text">Submit</div></Button>
         </form>
+        <Link
+          to='/'
+          className="button-to-dashboard"
+          type="submit"><div className="button-to-dashboard-text">Dashboard</div></Link>
         <section id="learning-stats">
           <h5>Correct guesses: </h5>
           <h5>Incorrect guesses: </h5>

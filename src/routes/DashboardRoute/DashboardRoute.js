@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import WordsToPractice from '../../components/Dashboard/WordsToPractice';
 import UserContext from '../../contexts/UserContext';
-import Context from '../../contexts/Context';
+// import Context from '../../contexts/Context';
 import { Link } from 'react-router-dom';
 import config from '../../config'
 import TokenService from '../../services/token-service'

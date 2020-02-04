@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import Context from "../../contexts/Context";
-import LearningService from '../../services/learning-service';
+// import Context from "../../contexts/Context";
+// import LearningService from '../../services/learning-service';
 import Button from '../../components/Button/Button';
+import { Link } from 'react-router-dom';
 import "./Learning.css";
 import NextWord from "./NextWord";
 
@@ -57,6 +58,10 @@ class Result extends Component {
           id="button-learning-next"
           type="submit"
           onClick={this.showNextWord}><div id="button-learning-next-text">Next word</div></Button>
+        <Link
+          to='/'
+          className="button-to-dashboard"
+          type="submit"><div className="button-to-dashboard-text">Dashboard</div></Link>
         <h4>Total score:</h4>
       </div>
     );

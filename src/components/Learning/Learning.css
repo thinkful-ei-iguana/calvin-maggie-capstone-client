@@ -5,6 +5,7 @@
 #button-learning-show-result {
   color: black;
   background-color: #c02f0e;
+  border: 3px outset silver;
   font-family: "Ubuntu", sans-serif;
   font-weight: bold;
   font-size: 20px;
@@ -31,7 +32,7 @@
   padding: 6px;
   width: 200px;
   margin-top: 5px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 #learning-stats {
@@ -49,11 +50,28 @@ h5 {
   font-size: 22px;
 }
 
+.button-to-dashboard-text {
+  margin: 4px;
+}
+
+.button-to-dashboard {
+  color: black;
+  background-color: #c02f0e;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 5px;
+  border: 3px outset silver;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
 /* Result.js */
 
 #button-learning-next {
   color: black;
   background-color: #c02f0e;
+   border: 3px outset silver;
   font-family: "Ubuntu", sans-serif;
   font-weight: bold;
   font-size: 20px;
