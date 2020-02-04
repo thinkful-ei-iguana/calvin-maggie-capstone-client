@@ -1,6 +1,9 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import UserContext from '../../contexts/UserContext'
+import ContentContext from '../../contexts/ContentContext'
+
+
 
 export default function PrivateRoute({ component, ...props }) {
   const Component = component
@@ -10,16 +13,22 @@ export default function PrivateRoute({ component, ...props }) {
       render={componentProps => (
         <UserContext.Consumer>
           {userContext =>
-            !!userContext.user.id
-              ? <Component {...componentProps} />
-              : (
-                <Redirect
-                  to={{
-                    pathname: userContext.user.idle ? '/login' : '/register',
-                    state: { from: componentProps.location },
-                  }}
-                />
+            <ContentContext.Consumer>
+              {content => (
+
+                !!userContext.user.id
+                  ? <Component {...componentProps} user={userContext} content={content} />
+                  : (
+                    <Redirect
+                      to={{
+                        pathname: userContext.user.idle ? '/login' : '/register',
+                        state: { from: componentProps.location },
+                      }}
+                    />
+                  )
               )
+              }
+            </ContentContext.Consumer>
           }
         </UserContext.Consumer>
       )}
