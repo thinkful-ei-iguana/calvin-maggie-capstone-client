@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Context from "../../contexts/Context";
 // import DashboardService from '../../services/dashboard-service';
-// import "./WordsToPractice.css";
+import "../../routes/DashboardRoute/DashboardRoute.css";
 
 class WordsToPractice extends Component {
 
@@ -17,9 +17,9 @@ class WordsToPractice extends Component {
     let wordArrToRender = [];
     for (let i = 0; i < wordArr.length; i++) {
       wordArrToRender.push(
-        <div className='dashboard-individual-word-container'>
-          <p>{wordArr[i].original}</p>
-          <p>correct attempts:
+        <div className="dashboard-individual-word-container">
+          <p className="word-dashboard">{wordArr[i].original}</p>
+          <p className="attempts-dashboard">correct attempts:
         <br />
             incorrect attempts:</p>
         </div>

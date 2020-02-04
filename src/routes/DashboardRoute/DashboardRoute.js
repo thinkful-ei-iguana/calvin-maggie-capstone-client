@@ -45,14 +45,16 @@ class DashboardRoute extends Component {
             <Context.Consumer>
               {context => ( */}
         <section id="dashboard-container">
-          <h2>{this.context.user.name} is learning Maori!</h2>
+          <h2 id="welcome-message">{this.context.user.name} is learning Maori!</h2>
           <Button
-            type="submit">Let's learn!</Button>
+            id="button-lets-learn"
+            type="submit"><div id="learn-button-text">Let's learn!</div></Button>
+          <h3 id="words-header-dashboard">Words that you're learning:</h3>
           {/* <WordsToPractice user={user} context={context} /> */}
           <WordsToPractice words={words} />
           <section className="stats">
 
-            <p>Total score: 46</p>
+            <p id="total-score-dashboard">Total score: </p>
           </section>
         </section>
         {/* )}
