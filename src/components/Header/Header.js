@@ -46,7 +46,7 @@ class Header extends Component {
       <header>
         <h1 className="heading login-page-header">
           <Link className="heading login-page-link" to="/">
-            Spaced repetition
+            Maori in Motion
           </Link>
         </h1>
         {TokenService.hasAuthToken()
