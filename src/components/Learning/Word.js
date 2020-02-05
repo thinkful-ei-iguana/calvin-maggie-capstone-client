@@ -63,11 +63,12 @@ class Word extends Component {
   };
 
   handleSetState = data => {
+    console.log(data);
     this.setState({
       error: data.error,
       isCorrect: data.isCorrect,
-      correctCount: data.correctCount,
-      incorrectCount: data.incorrectCount,
+      correctCount: data.wordCorrectCount,
+      incorrectCount: data.wordIncorrectCount,
       totalScore: data.totalScore
     });
   };
@@ -82,7 +83,6 @@ class Word extends Component {
   // };
 
   render() {
-    console.log(this.state.nextWord);
     // console.log("props is", this.props.nextWord);
     // console.log("context is", this.context);
     return (
@@ -90,7 +90,17 @@ class Word extends Component {
         <h2>Translate the word:</h2>
         <h2>{this.props.currentWord}</h2>
         <span>Testnextword</span>
-        <p>Your total score is: 999</p>
+        <div className="learning_stats">
+          <h4 className="learning_correct">
+            You have answered this word correctly {this.props.correctCount}{" "}
+            times.
+          </h4>
+          <h4 className="learning_incorrect">
+            You have answered this word incorrectly {this.props.incorrectCount}{" "}
+            times.
+          </h4>
+        </div>
+        <p>Your total score is: {this.props.totalScore}</p>
         <form id="translation-guess-form" onSubmit={this.handleSubmit}>
           <label htmlFor="learn-guess-input">
             What's the translation for this word?
@@ -114,7 +124,7 @@ class Word extends Component {
           <div className="button-to-dashboard-text">Dashboard</div>
         </Link>
         <section id="learning-stats">
-          <h5>Correct guesses: {this.props.currentWord.correctCount}</h5>
+          <h5>Correct guesses: {this.props.correctCount}</h5>
           <h5>Incorrect guesses: {this.state.incorrectCount}</h5>
           <h4 id="total-score-learning">
             Total score: {this.state.totalScore}

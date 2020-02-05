@@ -32,11 +32,12 @@ class LearningRoute extends Component {
   }
 
   handleSetState = data => {
+    console.log(data);
     return this.setState({
       currentWord: data.currentWord,
       nextWord: data.nextWord,
-      correctCount: data.correctCount,
-      incorrectCount: data.incorrectCount,
+      correctCount: data.wordCorrectCount,
+      incorrectCount: data.wordIncorrectCount,
       totalScore: data.totalScore
     });
   };

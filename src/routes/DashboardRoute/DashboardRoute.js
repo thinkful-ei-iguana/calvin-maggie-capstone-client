@@ -10,7 +10,7 @@ class DashboardRoute extends Component {
   state = {
     words: [],
     totalScore: null
-  }
+  };
 
   static contextType = UserContext;
 
@@ -28,19 +28,18 @@ class DashboardRoute extends Component {
     })
       .then(res => res.json())
       .then(data => {
-        console.log('data is', data);
+        console.log("data is", data);
         this.setState({
           words: data.words,
           totalScore: data.language.total_score
-        })
-      }
-      );
+        });
+      });
   }
 
   render() {
     let words = this.state.words;
-    console.log('totalscore is', this.state.totalScore)
-    console.log('words is', words)
+    console.log("totalscore is", this.state.totalScore);
+    console.log("words is", words);
     console.log("look at dashboard line 46+ for text fixing");
 
     return (
@@ -61,12 +60,10 @@ class DashboardRoute extends Component {
           {/* <WordsToPractice user={user} context={context} /> */}
           <WordsToPractice words={words} />
 
-
           {/* {this.state.words && <p id="total-score-dashboard">Total score: {this.state.totalScore} </p>} */}
           <section className="stats">
             <p id="total-score-dashboard">'Total correct answers: 7'</p>
             {/* Total score: */}
-
           </section>
         </section>
         {/* )}
