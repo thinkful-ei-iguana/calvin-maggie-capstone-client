@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import Button from '../../components/Button/Button';
 import { Link } from 'react-router-dom';
 import "./Learning.css";
-import NextWord from "./NextWord";
+import Word from "./Word";
 
 // dont trust
 
@@ -40,7 +40,7 @@ class Result extends Component {
   // }
 
   showNextWord = () => {
-    return <NextWord />
+    return <Word />
   }
 
   displayResultMessage = () => {

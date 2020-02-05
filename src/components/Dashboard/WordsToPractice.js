@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Context from "../../contexts/Context";
+import Context from "../../contexts/ContentContext";
 // import DashboardService from '../../services/dashboard-service';
 import "../../routes/DashboardRoute/DashboardRoute.css";
 
@@ -19,9 +19,12 @@ class WordsToPractice extends Component {
       wordArrToRender.push(
         <div className="dashboard-individual-word-container">
           <p className="word-dashboard">{wordArr[i].original}</p>
-          <p className="attempts-dashboard">correct attempts:
-        <br />
-            incorrect attempts:</p>
+          <p className="attempts-dashboard">correct attempts: {wordArr[i].correct_count}
+            <br />
+            incorrect attempts: {wordArr[i].incorrect_count}
+            <br />
+            total score: {wordArr[i].correct_count}
+          </p>
         </div>
       )
     }
