@@ -22,6 +22,10 @@ class WordsToPractice extends Component {
             correct answer count: {wordArr[i].correct_count}
             <br />
             incorrect answer count: {wordArr[i].incorrect_count}
+            <br></br>
+            <h4>{console.log("wordarrtorender", wordArrToRender)}</h4>
+            <h4>{console.log("words to practice", this.words)}</h4>
+            {/* current score: {wordArr[i].total_score} */}
           </p>
         </li>
       );

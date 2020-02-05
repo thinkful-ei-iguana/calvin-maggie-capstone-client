@@ -36,6 +36,7 @@ class DashboardRoute extends Component {
 
   render() {
     let words = this.state.words;
+    console.log(this.state);
     console.log("words is", words);
     console.log("look at dashboard line 46+ for text fixing");
     return (
@@ -54,7 +55,6 @@ class DashboardRoute extends Component {
           </Link>
           <h4 id="words-header-dashboard">Words that you're learning:</h4>
           {/* <WordsToPractice user={user} context={context} /> */}
-
           <WordsToPractice words={words} />
 
           <section className="stats">

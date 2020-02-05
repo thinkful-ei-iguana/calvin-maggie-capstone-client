@@ -1,17 +1,15 @@
 import React, { Component } from "react";
 // import Context from "../../contexts/Context";
 // import LearningService from '../../services/learning-service';
-import Button from '../../components/Button/Button';
-import { Link } from 'react-router-dom';
+import Button from "../../components/Button/Button";
+import { Link } from "react-router-dom";
 import Result from "./Result";
 
 // import "../../routes/DashboardRoute/DashboardRoute.css";
 
 // dont trust
 
-
 class NextWord extends Component {
-
   // static contextType = Context;
   // static defaultProps = {
   //   // context: {},
@@ -40,7 +38,7 @@ class NextWord extends Component {
 
   showResult = () => {
     return <Result />;
-  }
+  };
 
   render() {
     // console.log('user context: ', this.props.user);
@@ -49,23 +47,25 @@ class NextWord extends Component {
       <section id="translate-page-container">
         <h3>Translate this word:</h3>
         <h2>WORD</h2>
-        <form
-          id="translation-guess-form"
-          onSubmit={this.handleSubmit}>
+        {/* the h2 above should have the current word to be translated */}
+        <form id="translation-guess-form" onSubmit={this.handleSubmit}>
           <input
             name="guess"
             type="text"
             required
-            id="translation-input"></input>
+            id="translation-input"
+          ></input>
           <Button
             id="button-learning-show-result"
             type="submit"
-            onClick={this.showResult}><div id="button-learning-show-result-text">Submit</div></Button>
+            onClick={this.showResult}
+          >
+            <div id="button-learning-show-result-text">Submit</div>
+          </Button>
         </form>
-        <Link
-          to='/'
-          className="button-to-dashboard"
-          type="submit"><div className="button-to-dashboard-text">Dashboard</div></Link>
+        <Link to="/" className="button-to-dashboard" type="submit">
+          <div className="button-to-dashboard-text">Dashboard</div>
+        </Link>
         <section id="learning-stats">
           <h5>Correct guesses: </h5>
           <h5>Incorrect guesses: </h5>
