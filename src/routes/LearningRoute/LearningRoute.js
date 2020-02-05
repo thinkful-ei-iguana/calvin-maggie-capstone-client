@@ -13,15 +13,15 @@ class LearningRoute extends Component {
       }
     };
   }
-  componentDidMount() {
-    LanguageApiService.getHead().then(res => {
-      this.setState({ head: res });
-    });
-  }
+  // componentDidMount() {
+  //   LanguageApiService.getHead().then(res => {
+  //     this.setState({ head: res });
+  //   });
+  // }
   render() {
     return (
       <section>
-        <Learning key={this.state.head.nextWord} head={this.state.head} />
+        {/* <Learning key={this.state.head.nextWord} head={this.state.head} /> */}
       </section>
       // <section>
       //    <NextWord />
