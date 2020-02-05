@@ -64,6 +64,10 @@ class LearningRoute extends Component {
           totalScore={this.state.totalScore}
         />
       </section>
+      // <section>
+      //    <NextWord />
+      //    <Result />
+      // </section>
     );
   }
 }

@@ -1,5 +1,19 @@
-
 /* RegistrationRoute.css */
+
+.already-have-an-account-link {
+  color: black;
+  background-color: #c02f0e;
+  border: 3px outset silver;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 4px;
+  height: 37px;
+  padding-top: 3px;
+  width: 260px;
+  text-align: center;
+  text-decoration: none;
+}
 
 #sign-up-heading-container {
   display: flex;
@@ -20,7 +34,7 @@
   font-family: "Shojumaru", cursive;
 }
 
- /* RegistrationForm.css */
+/* RegistrationForm.css */
 
 #sign-up-container {
   display: flex;
@@ -30,7 +44,7 @@
   margin-top: 20px;
 }
 
- footer {
+footer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,17 +59,17 @@
   font-family: "Shojumaru", cursive;
 }
 
-Label {
+label {
   font-size: 22px;
 }
 
-Input {
+input {
   margin-left: 38px;
   margin-bottom: 15px;
   margin-top: 5px;
 }
 
-.name-input{
+.name-input {
   margin-left: 27px;
 }
 
