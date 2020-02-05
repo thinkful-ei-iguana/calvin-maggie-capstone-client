@@ -18,6 +18,9 @@ class Word extends Component {
 
   state = {
     isCorrect: null,
+    correctCount: 0,
+    incorrectCount: 0,
+    totalScore: 0,
     currentGuess: ''
   }
   static contextType = ContentContext;
@@ -28,9 +31,6 @@ class Word extends Component {
     correctCount: null,
     incorrectCount: null,
     totalScore: null
-  }
-  componentDidMount() {
-
   }
 
   handleInput = (e) => {
@@ -46,7 +46,10 @@ class Word extends Component {
     const url = `${config.API_ENDPOINT}/language/guess`;
     let queryString = "?q=" + this.state.currentGuess;
     let newUrl = url + queryString;
-    const guess = { guess: this.state.currentGuess };
+    const guessJson = JSON.stringify({
+      guess: this.state.currentGuess,
+      currentWord: this.props.currentWord
+    });
 
     return fetch(newUrl, {
       method: 'POST',
@@ -54,19 +57,28 @@ class Word extends Component {
         'Content-type': 'application/json',
         'Authorization': `Bearer ${authToken}`
       },
-      body: JSON.stringify(guess)
+      body: guessJson
     })
       .then(res => res.json())
       .then((data) => {
-        this.setState({ error: data.error });
+        this.handleSetState(data);
         console.log('data from the post is', data);
-        this.showResult();
       });
   }
 
+  handleSetState = (data) => {
+    this.setState({
+      error: data.error,
+      isCorrect: data.isCorrect,
+      correctCount: data.correctCount,
+      incorrectCount: data.incorrectCount,
+      totalScore: data.totalScore
+    });
+  }
+
   showResult = () => {
-    console.log('hi there')
-    // return <Result />;
+
+    return <Result isCorrect={this.state.isCorrect} />;
   }
 
   render() {
@@ -96,9 +108,9 @@ class Word extends Component {
           className="button-to-dashboard"
           type="submit"><div className="button-to-dashboard-text">Dashboard</div></Link>
         <section id="learning-stats">
-          <h5>Correct guesses: {this.props.correctCount}</h5>
-          <h5>Incorrect guesses: {this.props.incorrectCount}</h5>
-          <h4 id="total-score-learning">Total score: {this.props.totalScore}</h4>
+          <h5>Correct guesses: {this.state.correctCount}</h5>
+          <h5>Incorrect guesses: {this.state.incorrectCount}</h5>
+          <h4 id="total-score-learning">Total score: {this.state.totalScore}</h4>
         </section>
         {/* <div id='list-of-words-and-attempts'>
           {this.renderWords()}
