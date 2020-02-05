@@ -1,15 +1,14 @@
 import React, { Component } from "react";
 // import Context from "../../contexts/Context";
 // import LearningService from '../../services/learning-service';
-import Button from '../../components/Button/Button';
-import { Link } from 'react-router-dom';
+import Button from "../../components/Button/Button";
+import { Link } from "react-router-dom";
 import "./Learning.css";
 import Word from "./Word";
 
 // dont trust
 
 class Result extends Component {
-
   // static contextType = Context;
   // static defaultProps = {
   //   // context: {},
@@ -40,28 +39,29 @@ class Result extends Component {
   // }
 
   showNextWord = () => {
-    return <Word />
-  }
+    return <Word />;
+  };
 
-  displayResultMessage = () => {
-
-  }
-
+  displayResultMessage = () => {};
 
   render() {
-
     return (
       <div>
         {this.displayResultMessage}
-        <h3>The correct translation of WORD was TRANSLATION and you guessed ANSWER.</h3>
+        <h3>
+          The correct translation of {this.props.currentWord} was TRANSLATION
+          and you guessed ANSWER.
+        </h3>
         <Button
           id="button-learning-next"
           type="submit"
-          onClick={this.showNextWord}><div id="button-learning-next-text">Next word</div></Button>
-        <Link
-          to='/'
-          className="button-to-dashboard"
-          type="submit"><div className="button-to-dashboard-text">Dashboard</div></Link>
+          onClick={this.showNextWord}
+        >
+          <div id="button-learning-next-text">Next word</div>
+        </Button>
+        <Link to="/" className="button-to-dashboard" type="submit">
+          <div className="button-to-dashboard-text">Dashboard</div>
+        </Link>
         <h4>Total score:</h4>
       </div>
     );
