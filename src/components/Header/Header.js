@@ -45,7 +45,7 @@ class Header extends Component {
     return (
       <header>
         <h1 className="heading login-page-header">
-          <Link className="heading login-page-link" to="/">
+          <Link className="heading login-page-link" to="/login">
             Maori in Motion
           </Link>
         </h1>
