@@ -1,19 +1,18 @@
-import config from '../config'
-import TokenService from './token-service'
+import config from "../config";
+import TokenService from "./token-service";
 
 const LearningService = {
-
   getWords() {
     return fetch(`${config.API_ENDPOINT}/language`, {
-      method: 'GET',
+      method: "GET",
       headers: {
-        'content-type': 'application/json',
-        'authorization': `Bearer ${TokenService.getAuthToken()}`
+        "content-type": "application/json",
+        authorization: `Bearer ${TokenService.getAuthToken()}`
       }
     })
       .then(res => res.json())
       .then(data => {
-        console.log('data is', data);
+        console.log("data is", data);
         this.setState({
           words: data.words,
           totalScore: data.language.total_score
@@ -28,11 +27,9 @@ const LearningService = {
         "content-type": "application/json",
         authorization: `Bearer ${TokenService.getAuthToken()}`
       }
-    })
-      .then(res =>
-        (!res.ok)
-          ? res.json().then(e => Promise.reject(e))
-          : res.json())
+    }).then(res =>
+      !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
+    );
   },
 
   postGuess(guess) {
@@ -41,24 +38,17 @@ const LearningService = {
       guess: guess
     });
     const url = `${config.API_ENDPOINT}/language/guess`;
-    let queryString = "?q=" + guess;
-    let newUrl = url + queryString;
-
-    return fetch(newUrl, {
+    return fetch(url, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
         Authorization: `Bearer ${authToken}`
       },
       body: guessJson
-    })
-      .then(res =>
-        (!res.ok)
-          ? res.json().then(e => Promise.reject(e))
-          : res.json())
-
+    }).then(res =>
+      !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
+    );
   }
-
-}
+};
 
 export default LearningService;

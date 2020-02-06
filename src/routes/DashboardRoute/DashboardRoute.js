@@ -10,9 +10,8 @@ class DashboardRoute extends Component {
   state = {
     words: [],
     totalScore: null,
-    language: '',
+    language: "",
     key: null
-
   };
 
   static contextType = UserContext;
@@ -50,22 +49,21 @@ class DashboardRoute extends Component {
 
     return (
       <section>
-
         <section id="dashboard-container">
           <h2 id="welcome-message">
             {this.context.user.name} is learning {this.state.language}!
-            <p id="total-score-dashboard">Total correct answers: {this.state.totalScore}</p>
+            <p id="total-score-dashboard">
+              Total correct answers: {this.state.totalScore}
+            </p>
           </h2>
           <Link to="/learn" id="button-lets-learn" type="submit">
             <div id="learn-button-text">Start practicing</div>
           </Link>
-          <h4 id="words-header-dashboard">Words to practice</h4>
+          <h3 id="words-header-dashboard">Words to practice</h3>
           <WordsToPractice words={words} id={key} />
 
-          <section className="stats">
-          </section>
+          <section className="stats"></section>
         </section>
-
       </section>
     );
   }
