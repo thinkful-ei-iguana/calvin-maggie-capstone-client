@@ -13,15 +13,15 @@ import TokenService from "../../services/token-service";
 
 class Word extends Component {
   state = {
-    currentWord: '',
+    currentWord: "",
     isCorrect: null,
     wordCorrectCount: 0,
     wordIncorrectCount: 0,
     totalScore: 0,
-    nextWord: '',
-    currentGuess: '',
+    nextWord: "",
+    currentGuess: "",
     answer: null
-  }
+  };
   // static contextType = ContentContext;
 
   // static defaultProps = {
@@ -40,7 +40,6 @@ class Word extends Component {
     this.state.totalScore = this.props.totalScore;
   }
 
-
   handleInput = e => {
     e.preventDefault();
     this.setState({
@@ -50,15 +49,17 @@ class Word extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+
     console.log('this.props.nextword in Word handle is', this.props.nextWord);
     console.log('this.state.nextword in Word handle is', this.state.nextWord);
     console.log('this.state.currentword in Word handle is', this.state.currentWord);
+
     const authToken = TokenService.getAuthToken();
     const url = `${config.API_ENDPOINT}/language/guess`;
     let queryString = "?q=" + this.state.currentGuess;
     let newUrl = url + queryString;
     const guessJson = JSON.stringify({
-      guess: this.state.currentGuess,
+      guess: this.state.currentGuess
     });
 
     return fetch(newUrl, {
@@ -71,7 +72,7 @@ class Word extends Component {
     })
       .then(res => res.json())
       .then(data => {
-        console.log('data is post', data);
+        console.log("data is post", data);
         this.handleSetState(data);
       });
   };
@@ -133,24 +134,19 @@ class Word extends Component {
             onChange={this.handleInput.bind(this)}
             id="learn-guess-input"
           ></input>
+
           <Button
-            id="button-learning-show-result"
+            id="button-show-form"
             type="submit"
-            onClick={this.showResult}
+            onClick={this.setIsCorrect}
           >
-            <div id="button-learning-show-result-text">Submit your answer</div>
+            Try another word!
           </Button>
-        </form>}
-        {this.state.isCorrect !== null && <Button
-          id="button-show-form"
-          type="submit"
-          onClick={this.setIsCorrect}
-        >Try another word!</Button>}
+        )}
 
         <Link to="/" className="button-to-dashboard" type="submit">
           <div className="button-to-dashboard-text">Dashboard</div>
         </Link>
-
       </section>
     );
   }
