@@ -27,7 +27,7 @@ class LearningRoute extends Component {
         console.log('data learning is', data);
         this.handleSetState(data);
       })
-      .then(() => console.log("state state", this.state));
+    // .then(() => console.log("state state", this.state));
   }
 
   handleSetState = data => {

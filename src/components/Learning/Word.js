@@ -13,6 +13,7 @@ import TokenService from "../../services/token-service";
 
 class Word extends Component {
   state = {
+    currentWord: '',
     isCorrect: null,
     wordCorrectCount: 0,
     wordIncorrectCount: 0,
@@ -32,12 +33,12 @@ class Word extends Component {
   constructor(props) {
     super(props);
 
+    this.state.currentWord = this.props.nextWord;
     this.state.nextWord = this.props.nextWord;
     this.state.wordCorrectCount = this.props.wordCorrectCount;
     this.state.wordIncorrectCount = this.props.wordIncorrectCount;
     this.state.totalScore = this.props.totalScore;
 
-    console.log('thisprops', this.props);
   }
 
 
@@ -50,6 +51,9 @@ class Word extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    console.log('this.props.nextword in Word is', this.props.nextWord);
+    console.log('this.state.nextword in Word is', this.state.nextWord);
+    console.log('this.state.currentword in Word is', this.state.currentWord);
     const authToken = TokenService.getAuthToken();
     const url = `${config.API_ENDPOINT}/language/guess`;
     let queryString = "?q=" + this.state.currentGuess;
@@ -68,8 +72,8 @@ class Word extends Component {
     })
       .then(res => res.json())
       .then(data => {
+        console.log('data is post', data);
         this.handleSetState(data);
-        console.log("data from the post is", data);
       });
   };
 
@@ -82,23 +86,16 @@ class Word extends Component {
       nextWord: data.nextWord.original,
       answer: data.answer
     });
-    console.log('state is set', this.state);
   };
 
   setIsCorrect = () => {
     this.setState({
-      isCorrect: null
+      isCorrect: null,
+      currentWord: this.state.nextWord
     })
   }
 
-  // showResult = () => {
-  //   if (this.isCorrect === true) {
-  //     console.log("You gave the correct answer!");
-  //     return "You gave the correct answer!";
-  //   } else {
-  //     return <Result isCorrect={this.state.isCorrect} />;
-  //   }
-  // };
+
 
   render() {
     // console.log("props is", this.props.nextWord);
@@ -118,13 +115,13 @@ class Word extends Component {
         <p>Your total score is: {this.state.totalScore}</p>
 
         {this.state.isCorrect === true && <section id="correct-answer-feedback"><p>You were correct! :D</p>
-          <p>The correct translation for {this.state.nextWord} was {this.state.answer} and you chose {this.state.currentGuess}!</p></section>}
+          <p>The correct translation for {this.state.currentWord} was {this.state.answer} and you chose {this.state.currentGuess}!</p></section>}
         {this.state.isCorrect === false && <section id="incorrect-answer-feedback"><p>Good try, but not quite right :(</p>
-          <p>The correct translation for {this.state.nextWord} was {this.state.answer} and you chose {this.state.currentGuess}!</p></section>}
+          <p>The correct translation for {this.state.currentWord} was {this.state.answer} and you chose {this.state.currentGuess}!</p></section>}
 
         {this.state.isCorrect === null && <form id="translation-guess-form" onSubmit={this.handleSubmit}>
           <label htmlFor="learn-guess-input">
-            What's the translation for this word? <span>{this.state.nextWord}</span>
+            <h2>Translate the word:</h2> <span>{this.state.nextWord}</span>
           </label>
           <input
             type="text"
