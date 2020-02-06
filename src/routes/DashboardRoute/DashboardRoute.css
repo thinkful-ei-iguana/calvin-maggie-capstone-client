@@ -15,6 +15,7 @@
 #button-lets-learn {
   color: black;
   background-color: #c02f0e;
+  border: 3px outset silver;
   font-family: "Ubuntu", sans-serif;
   font-weight: bold;
   font-size: 20px;
@@ -23,6 +24,7 @@
   border: 3px outset silver;
   border-radius: 4px;
   text-decoration: none;
+  padding: 2px;
 }
 
 #words-header-dashboard {

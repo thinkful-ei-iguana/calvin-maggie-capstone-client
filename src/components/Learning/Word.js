@@ -90,10 +90,8 @@ class Word extends Component {
       })
   }
 
-
-
   render() {
-  
+
     return (
       <section id="translate-page-container">
         <div className="learning_stats">
