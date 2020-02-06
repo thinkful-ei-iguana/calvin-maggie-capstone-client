@@ -10,7 +10,7 @@ class DashboardRoute extends Component {
   state = {
     words: [],
     totalScore: null,
-    language: ''
+    language: ""
   };
 
   static contextType = UserContext;
@@ -58,7 +58,7 @@ class DashboardRoute extends Component {
           <Link to="/learn" id="button-lets-learn" type="submit">
             <div id="learn-button-text">Start practicing</div>
           </Link>
-          <h4 id="words-header-dashboard">Words that you're learning:</h4>
+          <h3 id="words-header-dashboard">Words to practice</h3>
           {/* <WordsToPractice user={user} context={context} /> */}
           <WordsToPractice words={words} />
 

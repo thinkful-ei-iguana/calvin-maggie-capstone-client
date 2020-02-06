@@ -8,7 +8,7 @@ class LearningRoute extends Component {
   state = {
     wordCorrectCount: 0,
     wordIncorrectCount: 0,
-    nextWord: '',
+    nextWord: "",
     totalScore: 0
   };
 
@@ -24,11 +24,10 @@ class LearningRoute extends Component {
     })
       .then(res => res.json())
       .then(data => {
-        console.log('data learning is', data);
+        console.log("data learning is", data);
         this.handleSetState(data);
-      })
+      });
   }
-
 
   handleSetState = data => {
     return this.setState({
@@ -40,14 +39,17 @@ class LearningRoute extends Component {
   };
 
   getWord() {
-    console.log('this.state.wordcorrectcount in learning route is', this.state.wordCorrectCount);
-    if (this.state.nextWord !== '') {
+    console.log(
+      "this.state.wordcorrectcount in learning route is",
+      this.state.wordCorrectCount
+    );
+    if (this.state.nextWord !== "") {
       return (
         <section>
           <Word
             nextWord={this.state.nextWord}
-            wordCorrectCount={this.state.correctCount}
-            wordIncorrectCount={this.state.incorrectCount}
+            wordCorrectCount={this.state.wordCorrectCount}
+            wordIncorrectCount={this.state.wordIncorrectCount}
             totalScore={this.state.totalScore}
           />
         </section>
@@ -57,11 +59,7 @@ class LearningRoute extends Component {
   }
 
   render() {
-    return (
-      <section>
-        {this.getWord()}
-      </section>
-    );
+    return <section>{this.getWord()}</section>;
   }
 }
 
