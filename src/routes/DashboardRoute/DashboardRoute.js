@@ -12,6 +12,7 @@ class DashboardRoute extends Component {
     totalScore: null,
     language: '',
     key: null
+
   };
 
   static contextType = UserContext;
@@ -60,6 +61,7 @@ class DashboardRoute extends Component {
           </Link>
           <h4 id="words-header-dashboard">Words to practice</h4>
           <WordsToPractice words={words} id={key} />
+
           <section className="stats">
           </section>
         </section>

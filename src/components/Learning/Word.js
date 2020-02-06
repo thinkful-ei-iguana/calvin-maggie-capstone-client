@@ -7,9 +7,8 @@ import { Link } from "react-router-dom";
 // import Result from "./Result";
 import config from "../../config";
 import TokenService from "../../services/token-service";
+import WordsToPracice from "../Dashboard/WordsToPractice";
 
-
-// dont trust
 
 class Word extends Component {
   state = {
@@ -53,6 +52,7 @@ class Word extends Component {
     const guess = this.state.currentGuess;
 
     LearningService.postGuess(guess)
+
       .then(data => {
         console.log("data is post", data);
         this.handleSetState(data);
@@ -69,8 +69,12 @@ class Word extends Component {
       answer: data.answer,
       currentWord: this.state.nextWord
     });
-    console.log('what is this.state.nextword out of the raw res', this.state.nextword)
+    console.log(
+      "what is this.state.nextword out of the raw res",
+      this.state.nextword
+    );
   };
+
 
   handleNextWordClick = () => {
     LearningService.getWord()
@@ -89,8 +93,7 @@ class Word extends Component {
 
 
   render() {
-    console.log("props is", this.props);
-    console.log("state is", this.state);
+  
     return (
       <section id="translate-page-container">
         <div className="learning_stats">
@@ -136,6 +139,7 @@ class Word extends Component {
           type="submit"
           onClick={this.handleNextWordClick}
         >Try another word!</Button>}
+
 
         <Link to="/" className="button-to-dashboard" type="submit">
           <div className="button-to-dashboard-text">Dashboard</div>
