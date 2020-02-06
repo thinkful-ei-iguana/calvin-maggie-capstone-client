@@ -117,6 +117,11 @@ class Word extends Component {
         </div>
         <p>Your total score is: {this.state.totalScore}</p>
 
+        {this.state.isCorrect === true && <section id="correct-answer-feedback"><p>You were correct! :D</p>
+          <p>The correct translation for {this.state.nextWord} was {this.state.answer} and you chose {this.state.currentGuess}!</p></section>}
+        {this.state.isCorrect === false && <section id="incorrect-answer-feedback"><p>Good try, but not quite right :(</p>
+          <p>The correct translation for {this.state.nextWord} was {this.state.answer} and you chose {this.state.currentGuess}!</p></section>}
+
         {this.state.isCorrect === null && <form id="translation-guess-form" onSubmit={this.handleSubmit}>
           <label htmlFor="learn-guess-input">
             What's the translation for this word? <span>{this.state.nextWord}</span>
@@ -140,7 +145,7 @@ class Word extends Component {
           id="button-show-form"
           type="submit"
           onClick={this.setIsCorrect}
-        >Next word</Button>}
+        >Try another word!</Button>}
 
         <Link to="/" className="button-to-dashboard" type="submit">
           <div className="button-to-dashboard-text">Dashboard</div>
