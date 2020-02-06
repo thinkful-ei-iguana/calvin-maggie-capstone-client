@@ -42,7 +42,7 @@ class Result extends Component {
     return <Word />;
   };
 
-  displayResultMessage = () => {};
+  displayResultMessage = () => { };
 
   render() {
     return (

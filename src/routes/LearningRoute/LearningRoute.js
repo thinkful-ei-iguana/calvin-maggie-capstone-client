@@ -6,10 +6,9 @@ import ContentContext from "../../contexts/ContentContext";
 
 class LearningRoute extends Component {
   state = {
-    currentWord: "placeholder",
-    correctCount: 0,
-    incorrectCount: 0,
-    nextWord: 2,
+    wordCorrectCount: 0,
+    wordIncorrectCount: 0,
+    nextWord: '',
     totalScore: 0
   };
 
@@ -25,38 +24,37 @@ class LearningRoute extends Component {
     })
       .then(res => res.json())
       .then(data => {
-        // console.log('data learning is', data);
+        console.log('data learning is', data);
         this.handleSetState(data);
       })
       .then(() => console.log("state state", this.state));
   }
 
   handleSetState = data => {
-    console.log(data);
     return this.setState({
-      currentWord: data.currentWord,
       nextWord: data.nextWord,
-      correctCount: data.wordCorrectCount,
-      incorrectCount: data.wordIncorrectCount,
+      wordCorrectCount: data.wordCorrectCount,
+      wordIncorrectCount: data.wordIncorrectCount,
       totalScore: data.totalScore
     });
   };
 
+  getWord() {
+    if (this.state.nextWord !== '') {
+      return <Word
+        nextWord={this.state.nextWord}
+        wordCorrectCount={this.state.correctCount}
+        wordIncorrectCount={this.state.incorrectCount}
+        totalScore={this.state.totalScore}
+      />;
+    }
+    return <div></div>;
+  }
+
   render() {
-    let currentWord = this.context.currentWord;
-    let nextWord = this.context.nextWord;
-    let correctCount = this.context.correctCount;
-    let incorrectCount = this.context.incorrectCount;
-    let totalScore = this.context.totalScore;
     return (
       <section>
-        <Word
-          currentWord={this.state.currentWord}
-          nextWord={this.state.nextWord}
-          correctCount={this.state.correctCount}
-          incorrectCount={this.state.incorrectCount}
-          totalScore={this.state.totalScore}
-        />
+        {this.getWord()}
       </section>
       // <section>
       //    <NextWord />
