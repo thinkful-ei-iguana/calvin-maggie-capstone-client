@@ -41,12 +41,27 @@ class LearningRoute extends Component {
 
   getWord() {
     if (this.state.nextWord !== '') {
-      return <Word
-        nextWord={this.state.nextWord}
-        wordCorrectCount={this.state.correctCount}
-        wordIncorrectCount={this.state.incorrectCount}
-        totalScore={this.state.totalScore}
-      />;
+      return (
+        <section>
+          <div className="learning_stats">
+            <h4 className="learning_correct">
+              You have answered this word correctly {this.state.wordCorrectCount}{" "}
+              times.
+          </h4>
+            <h4 className="learning_incorrect">
+              You have answered this word incorrectly {this.state.wordIncorrectCount}{" "}
+              times.
+          </h4>
+          </div>
+          <p>Your total score is: {this.state.totalScore}</p>
+          <Word
+            nextWord={this.state.nextWord}
+            wordCorrectCount={this.state.correctCount}
+            wordIncorrectCount={this.state.incorrectCount}
+            totalScore={this.state.totalScore}
+          />
+        </section>
+      );
     }
     return <div></div>;
   }
