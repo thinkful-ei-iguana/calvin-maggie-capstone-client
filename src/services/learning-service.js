@@ -38,6 +38,7 @@ const LearningService = {
       guess: guess
     });
     const url = `${config.API_ENDPOINT}/language/guess`;
+
     return fetch(url, {
       method: "POST",
       headers: {

@@ -15,6 +15,7 @@ class RegistrationRoute extends Component {
 
   render() {
     return (
+
       <section id="sign-up-heading-container">
         <h2 id="sign-up-heading">Sign up</h2>
         <p id="sign-up-desc">
