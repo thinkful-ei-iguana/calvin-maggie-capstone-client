@@ -13,15 +13,15 @@ import TokenService from "../../services/token-service";
 
 class Word extends Component {
   state = {
-    currentWord: '',
+    currentWord: "",
     isCorrect: null,
     wordCorrectCount: 0,
     wordIncorrectCount: 0,
     totalScore: 0,
-    nextWord: '',
-    currentGuess: '',
+    nextWord: "",
+    currentGuess: "",
     answer: null
-  }
+  };
   // static contextType = ContentContext;
 
   // static defaultProps = {
@@ -40,7 +40,6 @@ class Word extends Component {
     this.state.totalScore = this.props.totalScore;
   }
 
-
   handleInput = e => {
     e.preventDefault();
     this.setState({
@@ -55,7 +54,7 @@ class Word extends Component {
 
     LearningService.postGuess(guess)
       .then(data => {
-        console.log('data is post', data);
+        console.log("data is post", data);
         this.handleSetState(data);
       });
   };
@@ -124,11 +123,12 @@ class Word extends Component {
             onChange={this.handleInput.bind(this)}
             id="learn-guess-input"
           ></input>
+
           <Button
-            id="button-learning-show-result"
+            id="button-show-form"
             type="submit"
           >
-            <div id="button-learning-show-result-text">Submit your answer</div>
+            Try another word!
           </Button>
         </form>}
         {this.state.isCorrect !== null && <Button
@@ -140,7 +140,6 @@ class Word extends Component {
         <Link to="/" className="button-to-dashboard" type="submit">
           <div className="button-to-dashboard-text">Dashboard</div>
         </Link>
-
       </section>
     );
   }
