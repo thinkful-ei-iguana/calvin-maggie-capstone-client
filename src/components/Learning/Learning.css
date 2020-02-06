@@ -2,7 +2,7 @@
 
 /* Word.js */
 
-#button-learning-show-result {
+#button-learning-show-result, #button-show-form {
   color: black;
   background-color: #c02f0e;
   border: 3px outset silver;
