@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import Word from "../../components/Learning/Word";
 import config from "../../config";
-import TokenService from "../../services/token-service";
+import LearningService from "../../services/learning-service";
 import ContentContext from "../../contexts/ContentContext";
+// import "../../routes/DashboardRoute/DashboardRoute.css";
+import "../../components/Learning/Learning.css";
 
 class LearningRoute extends Component {
   state = {
@@ -15,17 +17,13 @@ class LearningRoute extends Component {
   static contextType = ContentContext;
 
   componentDidMount() {
-    return fetch(`${config.API_ENDPOINT}/language/head`, {
-      method: "GET",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${TokenService.getAuthToken()}`
-      }
-    })
-      .then(res => res.json())
+    LearningService.getWord()
       .then(data => {
         console.log('data learning is', data);
         this.handleSetState(data);
+      })
+      .then(() => {
+        this.getWord();
       })
   }
 
@@ -46,8 +44,8 @@ class LearningRoute extends Component {
         <section>
           <Word
             nextWord={this.state.nextWord}
-            wordCorrectCount={this.state.correctCount}
-            wordIncorrectCount={this.state.incorrectCount}
+            wordCorrectCount={this.state.wordCorrectCount}
+            wordIncorrectCount={this.state.wordIncorrectCount}
             totalScore={this.state.totalScore}
           />
         </section>

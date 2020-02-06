@@ -12,16 +12,17 @@ class WordsToPractice extends Component {
   };
 
   renderWords() {
+    console.log('key is', this.props.words)
     let wordArr = this.props.words;
     let wordArrToRender = [];
     for (let i = 0; i < wordArr.length; i++) {
       wordArrToRender.push(
-        <li className="dashboard-individual-word-container">
+        <li key={this.props.words[i].id} className="dashboard-individual-word-container">
           <h4 className="word-dashboard">{wordArr[i].original}</h4>
           <h4 className="attempts-dashboard">
-            correct answer count: {wordArr[i].correct_count}
+            Correct answer count: {wordArr[i].correct_count}
             <br />
-            incorrect answer count: {wordArr[i].incorrect_count}
+            Incorrect answer count: {wordArr[i].incorrect_count}
             <br></br>
             <p>{console.log("wordarrtorender", wordArrToRender)}</p>
             <p>{console.log("words to practice", this.words)}</p>

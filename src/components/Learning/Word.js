@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 // import ContentContext from "../../contexts/ContentContext";
 // import LearningService from '../../services/learning-service';
+import LearningService from "../../services/learning-service";
 import Button from "../Button/Button";
 import { Link } from "react-router-dom";
-import Result from "./Result";
+// import Result from "./Result";
 import config from "../../config";
 import TokenService from "../../services/token-service";
 
-// import "../../routes/DashboardRoute/DashboardRoute.css";
 
 // dont trust
 
@@ -48,28 +48,12 @@ class Word extends Component {
     });
   };
 
-  handleSubmit = e => {
+  postGuessHandler = e => {
     e.preventDefault();
-    console.log('this.props.nextword in Word handle is', this.props.nextWord);
-    console.log('this.state.nextword in Word handle is', this.state.nextWord);
-    console.log('this.state.currentword in Word handle is', this.state.currentWord);
-    const authToken = TokenService.getAuthToken();
-    const url = `${config.API_ENDPOINT}/language/guess`;
-    let queryString = "?q=" + this.state.currentGuess;
-    let newUrl = url + queryString;
-    const guessJson = JSON.stringify({
-      guess: this.state.currentGuess,
-    });
 
-    return fetch(newUrl, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-        Authorization: `Bearer ${authToken}`
-      },
-      body: guessJson
-    })
-      .then(res => res.json())
+    const guess = this.state.currentGuess;
+
+    LearningService.postGuess(guess)
       .then(data => {
         console.log('data is post', data);
         this.handleSetState(data);
@@ -83,36 +67,40 @@ class Word extends Component {
       wordIncorrectCount: data.wordIncorrectCount,
       totalScore: data.totalScore,
       nextWord: data.nextWord.original,
-      answer: data.answer
+      answer: data.answer,
+      currentWord: this.state.nextWord
     });
     console.log('what is this.state.nextword out of the raw res', this.state.nextword)
   };
 
-  setIsCorrect = () => {
-    this.setState({
-      isCorrect: null,
-      currentWord: this.state.nextWord
-    });
-    this.props.handleGetWord();
-    console.log('this.props.nextword in Word after setiscorrect is', this.props.nextWord);
-    console.log('this.state.nextword in Word after setiscorrect is', this.state.nextWord);
-    console.log('this.state.currentword in Word after setiscorrect is', this.state.currentWord);
+  handleNextWordClick = () => {
+    LearningService.getWord()
+      .then(data => {
+        this.setState({
+          nextWord: data.nextWord,
+          wordCorrectCount: data.wordCorrectCount,
+          wordIncorrectCount: data.wordIncorrectCount,
+          totalScore: data.totalScore,
+          isCorrect: null,
+          // currentWord: this.state.nextWord
+        })
+      })
   }
 
 
 
   render() {
     console.log("props is", this.props);
-    // console.log("context is", this.context);
+    console.log("state is", this.state);
     return (
       <section id="translate-page-container">
         <div className="learning_stats">
           <h4 className="learning_correct">
-            You have answered this word correctly {this.props.wordCorrectCount}{" "}
+            You have answered this word correctly {this.state.wordCorrectCount}{" "}
             times.
           </h4>
           <h4 className="learning_incorrect">
-            You have answered this word incorrectly {this.props.wordIncorrectCount}{" "}
+            You have answered this word incorrectly {this.state.wordIncorrectCount}{" "}
             times.
           </h4>
         </div>
@@ -122,9 +110,12 @@ class Word extends Component {
         {this.state.isCorrect === false && <section id="incorrect-answer-feedback"><p>Good try, but not quite right :(</p>
           <p>The correct translation for {this.state.currentWord} was {this.state.answer} and you chose {this.state.currentGuess}!</p></section>}
 
-        {this.state.isCorrect === null && <form id="translation-guess-form" onSubmit={this.handleSubmit}>
+        {this.state.isCorrect === null && <form id="translation-guess-form"
+          onSubmit={this.postGuessHandler}
+        >
+          <h2>Translate the word:</h2> <span>{this.state.nextWord}</span>
           <label htmlFor="learn-guess-input">
-            <h2>Translate the word:</h2> <span>{this.state.currentWord}</span>
+            <p>What's the translation for this word?</p>
           </label>
           <input
             type="text"
@@ -136,7 +127,6 @@ class Word extends Component {
           <Button
             id="button-learning-show-result"
             type="submit"
-            onClick={this.showResult}
           >
             <div id="button-learning-show-result-text">Submit your answer</div>
           </Button>
@@ -144,7 +134,7 @@ class Word extends Component {
         {this.state.isCorrect !== null && <Button
           id="button-show-form"
           type="submit"
-          onClick={this.setIsCorrect}
+          onClick={this.handleNextWordClick}
         >Try another word!</Button>}
 
         <Link to="/" className="button-to-dashboard" type="submit">
