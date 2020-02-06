@@ -27,8 +27,8 @@ class LearningRoute extends Component {
         console.log('data learning is', data);
         this.handleSetState(data);
       })
-    // .then(() => console.log("state state", this.state));
   }
+
 
   handleSetState = data => {
     return this.setState({
@@ -40,20 +40,10 @@ class LearningRoute extends Component {
   };
 
   getWord() {
+    console.log('this.state.wordcorrectcount in learning route is', this.state.wordCorrectCount);
     if (this.state.nextWord !== '') {
       return (
         <section>
-          <div className="learning_stats">
-            <h4 className="learning_correct">
-              You have answered this word correctly {this.state.wordCorrectCount}{" "}
-              times.
-          </h4>
-            <h4 className="learning_incorrect">
-              You have answered this word incorrectly {this.state.wordIncorrectCount}{" "}
-              times.
-          </h4>
-          </div>
-          <p>Your total score is: {this.state.totalScore}</p>
           <Word
             nextWord={this.state.nextWord}
             wordCorrectCount={this.state.correctCount}
@@ -71,10 +61,6 @@ class LearningRoute extends Component {
       <section>
         {this.getWord()}
       </section>
-      // <section>
-      //    <NextWord />
-      //    <Result />
-      // </section>
     );
   }
 }

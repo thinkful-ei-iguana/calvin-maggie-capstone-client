@@ -24,12 +24,12 @@ class Word extends Component {
   };
   // static contextType = ContentContext;
 
-  static defaultProps = {
-    nextWord: "",
-    wordCorrectCount: null,
-    wordIncorrectCount: null,
-    totalScore: null
-  };
+  // static defaultProps = {
+  //   nextWord: "",
+  //   wordCorrectCount: 0,
+  //   wordIncorrectCount: 0,
+  //   totalScore: 0
+  // };
   constructor(props) {
     super(props);
 
@@ -49,9 +49,11 @@ class Word extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log("this.props.nextword in Word is", this.props.nextWord);
-    console.log("this.state.nextword in Word is", this.state.nextWord);
-    console.log("this.state.currentword in Word is", this.state.currentWord);
+
+    console.log('this.props.nextword in Word handle is', this.props.nextWord);
+    console.log('this.state.nextword in Word handle is', this.state.nextWord);
+    console.log('this.state.currentword in Word handle is', this.state.currentWord);
+
     const authToken = TokenService.getAuthToken();
     const url = `${config.API_ENDPOINT}/language/guess`;
     let queryString = "?q=" + this.state.currentGuess;
@@ -84,6 +86,7 @@ class Word extends Component {
       nextWord: data.nextWord.original,
       answer: data.answer
     });
+    console.log('what is this.state.nextword out of the raw res', this.state.nextword)
   };
 
   setIsCorrect = () => {
@@ -91,58 +94,47 @@ class Word extends Component {
       isCorrect: null,
       currentWord: this.state.nextWord
     });
-  };
+    this.props.handleGetWord();
+    console.log('this.props.nextword in Word after setiscorrect is', this.props.nextWord);
+    console.log('this.state.nextword in Word after setiscorrect is', this.state.nextWord);
+    console.log('this.state.currentword in Word after setiscorrect is', this.state.currentWord);
+  }
+
+
 
   render() {
-    // console.log("props is", this.props.nextWord);
+    console.log("props is", this.props);
     // console.log("context is", this.context);
     return (
       <section id="translate-page-container">
-        {this.state.isCorrect === true && (
-          <section id="correct-answer-feedback">
-            <p>You were correct! :D</p>
-            <p>
-              The correct translation for {this.state.currentWord} was{" "}
-              {this.state.answer} and you chose {this.state.currentGuess}!
-            </p>
-          </section>
-        )}
-        {this.state.isCorrect === false && (
-          <section id="incorrect-answer-feedback">
-            <p>Good try, but not quite right :(</p>
-            <p>
-              The correct translation for {this.state.currentWord} was{" "}
-              {this.state.answer} and you chose {this.state.currentGuess}!
-            </p>
-          </section>
-        )}
+        <div className="learning_stats">
+          <h4 className="learning_correct">
+            You have answered this word correctly {this.props.wordCorrectCount}{" "}
+            times.
+          </h4>
+          <h4 className="learning_incorrect">
+            You have answered this word incorrectly {this.props.wordIncorrectCount}{" "}
+            times.
+          </h4>
+        </div>
+        <p>Your total score is: {this.state.totalScore}</p>
+        {this.state.isCorrect === true && <section id="correct-answer-feedback"><p>You were correct! :D</p>
+          <p>The correct translation for {this.state.currentWord} was {this.state.answer} and you chose {this.state.currentGuess}!</p></section>}
+        {this.state.isCorrect === false && <section id="incorrect-answer-feedback"><p>Good try, but not quite right :(</p>
+          <p>The correct translation for {this.state.currentWord} was {this.state.answer} and you chose {this.state.currentGuess}!</p></section>}
 
-        {this.state.isCorrect === null && (
-          <form id="translation-guess-form" onSubmit={this.handleSubmit}>
-            <h2>Translate the word:</h2>
-            <span>{this.state.nextWord}</span>
-            <label htmlFor="learn-guess-input">
-              What's the translation for this word?
-            </label>
-            <input
-              type="text"
-              name="guess"
-              required
-              onChange={this.handleInput.bind(this)}
-              id="learn-guess-input"
-            ></input>
-            <Button
-              id="button-learning-show-result"
-              type="submit"
-              onClick={this.showResult}
-            >
-              <div id="button-learning-show-result-text">
-                Submit your answer
-              </div>
-            </Button>
-          </form>
-        )}
-        {this.state.isCorrect !== null && (
+        {this.state.isCorrect === null && <form id="translation-guess-form" onSubmit={this.handleSubmit}>
+          <label htmlFor="learn-guess-input">
+            <h2>Translate the word:</h2> <span>{this.state.currentWord}</span>
+          </label>
+          <input
+            type="text"
+            name="guess"
+            required
+            onChange={this.handleInput.bind(this)}
+            id="learn-guess-input"
+          ></input>
+
           <Button
             id="button-show-form"
             type="submit"

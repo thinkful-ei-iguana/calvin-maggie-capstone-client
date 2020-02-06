@@ -9,7 +9,8 @@ import TokenService from "../../services/token-service";
 class DashboardRoute extends Component {
   state = {
     words: [],
-    totalScore: null
+    totalScore: null,
+    language: ''
   };
 
   static contextType = UserContext;
@@ -31,7 +32,8 @@ class DashboardRoute extends Component {
         console.log("data is", data);
         this.setState({
           words: data.words,
-          totalScore: data.language.total_score
+          totalScore: data.language.total_score,
+          language: data.language.name
         });
       });
   }
@@ -51,7 +53,7 @@ class DashboardRoute extends Component {
         {/* add the following commented out lines into the line above as appropriate, this is only for testing purposes */}
         <section id="dashboard-container">
           <h2 id="welcome-message">
-            {this.context.user.name} is learning Maori!
+            {this.context.user.name} is learning {this.state.language}!
           </h2>
           <Link to="/learn" id="button-lets-learn" type="submit">
             <div id="learn-button-text">Start practicing</div>
