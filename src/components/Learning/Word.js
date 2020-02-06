@@ -85,6 +85,12 @@ class Word extends Component {
     console.log('state is set', this.state);
   };
 
+  setIsCorrect = () => {
+    this.setState({
+      isCorrect: null
+    })
+  }
+
   // showResult = () => {
   //   if (this.isCorrect === true) {
   //     console.log("You gave the correct answer!");
@@ -110,7 +116,8 @@ class Word extends Component {
           </h4>
         </div>
         <p>Your total score is: {this.state.totalScore}</p>
-        <form id="translation-guess-form" onSubmit={this.handleSubmit}>
+
+        {this.state.isCorrect === null && <form id="translation-guess-form" onSubmit={this.handleSubmit}>
           <label htmlFor="learn-guess-input">
             What's the translation for this word? <span>{this.state.nextWord}</span>
           </label>
@@ -128,7 +135,13 @@ class Word extends Component {
           >
             <div id="button-learning-show-result-text">Submit your answer</div>
           </Button>
-        </form>
+        </form>}
+        {this.state.isCorrect !== null && <Button
+          id="button-show-form"
+          type="submit"
+          onClick={this.setIsCorrect}
+        >Next word</Button>}
+
         <Link to="/" className="button-to-dashboard" type="submit">
           <div className="button-to-dashboard-text">Dashboard</div>
         </Link>
