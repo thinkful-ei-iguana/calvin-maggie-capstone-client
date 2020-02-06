@@ -102,17 +102,6 @@ class Word extends Component {
     // console.log("context is", this.context);
     return (
       <section id="translate-page-container">
-        <div className="learning_stats">
-          <h4 className="learning_correct">
-            You have answered this word correctly {this.state.wordCorrectCount}{" "}
-            times.
-          </h4>
-          <h4 className="learning_incorrect">
-            You have answered this word incorrectly {this.state.wordIncorrectCount}{" "}
-            times.
-          </h4>
-        </div>
-        <p>Your total score is: {this.state.totalScore}</p>
 
         {this.state.isCorrect === true && <section id="correct-answer-feedback"><p>You were correct! :D</p>
           <p>The correct translation for {this.state.currentWord} was {this.state.answer} and you chose {this.state.currentGuess}!</p></section>}
