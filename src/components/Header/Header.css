@@ -1,9 +1,10 @@
 .login-page-link {
   text-decoration: none;
+  color: white;
 }
 
 .logged-in-user {
-  color: black;
+  color: white;
   font-size: x-large;
   font-weight: 700;
   margin-bottom: 15px;
@@ -31,5 +32,9 @@
 @media screen and (max-width: 767px) {
   .log-out-user {
     margin-top: -180px;
+  }
+  .login-page-link {
+    text-decoration: none;
+    color: white;
   }
 }

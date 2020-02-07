@@ -1,7 +1,7 @@
 /* RegistrationRoute.css */
 
 .already-have-an-account-link {
-  color: black;
+  color: white;
   background-color: #c02f0e;
   border: 3px outset silver;
   font-family: "Ubuntu", sans-serif;
@@ -55,6 +55,7 @@ footer {
   margin-top: 10px;
   font-size: 16px;
   border-radius: 3px;
+  color: white;
   background-color: #c02f0e;
   font-family: "Shojumaru", cursive;
 }

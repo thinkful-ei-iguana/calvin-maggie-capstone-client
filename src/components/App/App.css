@@ -43,6 +43,7 @@ h1 {
 .login-page-submit {
   background-color: #c02f0e;
   font-size: 16px;
+  color: white;
 }
 
 @media screen and (max-width: 767px) {
@@ -56,5 +57,9 @@ h1 {
     font-size: x-large;
     position: relative;
     top: 50px;
+    color: white;
   }
+}
+.login-page-link {
+  color: white;
 }
