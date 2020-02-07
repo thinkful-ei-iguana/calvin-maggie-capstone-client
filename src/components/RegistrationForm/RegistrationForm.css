@@ -4,13 +4,13 @@
   color: white;
   background-color: #c02f0e;
   border: 3px outset silver;
-  font-family: "Ubuntu", sans-serif;
-  font-weight: bold;
-  font-size: 20px;
+  font-family: "Shojumaru", cursive;
+  /* font-weight: bold; */
+  font-size: 16px;
   border-radius: 4px;
   height: 37px;
   padding-top: 3px;
-  width: 260px;
+  width: 300px;
   text-align: center;
   text-decoration: none;
 }
@@ -57,6 +57,7 @@ footer {
   border-radius: 3px;
   color: white;
   background-color: #c02f0e;
+  border: 3px outset silver;
   font-family: "Shojumaru", cursive;
 }
 

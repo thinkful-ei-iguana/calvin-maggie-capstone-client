@@ -73,19 +73,22 @@ class Word extends Component {
   };
 
   handleNextWordClick = () => {
-    LearningService.getWord().then(data => {
-      this.setState({
-        nextWord: data.nextWord,
-        wordCorrectCount: data.wordCorrectCount,
-        wordIncorrectCount: data.wordIncorrectCount,
-        totalScore: data.totalScore,
-        isCorrect: null
-        // currentWord: this.state.nextWord
-      });
-    });
-  };
+    LearningService.getWord()
+      .then(data => {
+        this.setState({
+          nextWord: data.nextWord,
+          wordCorrectCount: data.wordCorrectCount,
+          wordIncorrectCount: data.wordIncorrectCount,
+          totalScore: data.totalScore,
+          isCorrect: null,
+          // currentWord: this.state.nextWord
+        })
+      })
+  }
 
   render() {
+
+
     return (
       <section id="translate-page-container">
         <div className="learning_stats">

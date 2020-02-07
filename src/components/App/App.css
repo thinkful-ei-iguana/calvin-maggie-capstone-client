@@ -16,7 +16,7 @@ h1 {
 .login-page-header {
   height: 125px;
   padding-top: 50px;
-  background-color: #88220b;
+  background-color: #c02f0e;
   margin-top: 0px;
 }
 
@@ -41,6 +41,7 @@ h1 {
 }
 
 .login-page-submit {
+  color: white;
   background-color: #c02f0e;
   font-size: 16px;
   color: white;
@@ -62,4 +63,5 @@ h1 {
 }
 .login-page-link {
   color: white;
+
 }
