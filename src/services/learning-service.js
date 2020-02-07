@@ -12,7 +12,6 @@ const LearningService = {
     })
       .then(res => res.json())
       .then(data => {
-        console.log("data is", data);
         this.setState({
           words: data.words,
           totalScore: data.language.total_score

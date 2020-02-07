@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import WordsToPractice from "../../components/Dashboard/WordsToPractice";
 import UserContext from "../../contexts/UserContext";
-// import Context from '../../contexts/Context';
 import { Link } from "react-router-dom";
 import config from "../../config";
 import TokenService from "../../services/token-service";
@@ -30,7 +29,6 @@ class DashboardRoute extends Component {
     })
       .then(res => res.json())
       .then(data => {
-        console.log("data is", data);
         this.setState({
           words: data.words,
           totalScore: data.language.total_score,
@@ -43,9 +41,6 @@ class DashboardRoute extends Component {
   render() {
     let words = this.state.words;
     let key = this.state.key;
-    console.log("totalscore is", this.state.totalScore);
-    console.log("words is", words);
-    console.log("look at dashboard line 46+ for text fixing");
 
     return (
       <section>
@@ -61,7 +56,6 @@ class DashboardRoute extends Component {
           </Link>
           <h3 id="words-header-dashboard">Words to practice</h3>
           <WordsToPractice words={words} id={key} />
-
           <section className="stats"></section>
         </section>
       </section>
