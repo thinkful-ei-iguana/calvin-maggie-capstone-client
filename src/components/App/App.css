@@ -53,8 +53,6 @@ h1 {
     text-align: left;
     margin-right: -15px;
   }
-}
-@media screen and (max-width: 374px) {
   .login-page-link {
     font-size: x-large;
     position: relative;
