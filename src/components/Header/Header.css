@@ -10,16 +10,6 @@
   margin-right: 10px;
 }
 
-.log-out-user {
-  /* width: 70.8px;
-  text-align: center;
-  height: 28px; */
-  margin-bottom: 10px;
-  float: right;
-  margin-top: -110px;
-}
-
-
 .log-out-user-link {
   border-radius: 3px;
   border: outset silver 3px;
@@ -29,5 +19,17 @@
   padding: 5px;
   font-weight: bold;
   font-size: 18px;
+}
 
+.log-out-user {
+  font-size: x-large;
+  margin-bottom: 10px;
+  float: right;
+  margin-top: -150px;
+}
+
+@media screen and (max-width: 767px) {
+  .log-out-user {
+    margin-top: -180px;
+  }
 }

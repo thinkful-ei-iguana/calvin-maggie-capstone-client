@@ -44,3 +44,17 @@ h1 {
   background-color: #c02f0e;
   font-size: 16px;
 }
+
+@media screen and (max-width: 767px) {
+  .login-page-header {
+    height: 155px;
+    text-align: left;
+  }
+}
+@media screen and (max-width: 374px) {
+  .login-page-link {
+    font-size: x-large;
+    position: relative;
+    top: 50px;
+  }
+}
