@@ -51,6 +51,7 @@ h1 {
   .login-page-header {
     height: 155px;
     text-align: left;
+    margin-right: -15px;
   }
 }
 @media screen and (max-width: 374px) {
@@ -63,5 +64,4 @@ h1 {
 }
 .login-page-link {
   color: white;
-
 }
