@@ -24,4 +24,4 @@ Beyond the dashboard, users encounter one word at a time, flashcard-style. Upon 
 
 ## Screenshots
 
-![Image - spaced repetition dashboard]()
+![Image - spaced repetition dashboard](https://gyazo.com/f25d98350604971cfa2d53f8ab840e05)
