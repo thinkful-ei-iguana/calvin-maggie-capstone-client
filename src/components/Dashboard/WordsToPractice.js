@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import Context from "../../contexts/ContentContext";
 import "../../routes/DashboardRoute/DashboardRoute.css";
 
 class WordsToPractice extends Component {
-  static contextType = Context;
   static defaultProps = {
     words: []
   };

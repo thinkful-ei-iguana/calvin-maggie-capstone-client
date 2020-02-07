@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Word from "../../components/Learning/Word";
 import LearningService from "../../services/learning-service";
-import ContentContext from "../../contexts/ContentContext";
 import "../../components/Learning/Learning.css";
 
 class LearningRoute extends Component {
@@ -11,8 +10,6 @@ class LearningRoute extends Component {
     nextWord: "",
     totalScore: 0
   };
-
-  static contextType = ContentContext;
 
   componentDidMount() {
     LearningService.getWord()
