@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Word from "../../components/Learning/Word";
-import config from "../../config";
+// import config from "../../config";
 import LearningService from "../../services/learning-service";
 import ContentContext from "../../contexts/ContentContext";
 // import "../../routes/DashboardRoute/DashboardRoute.css";
@@ -22,9 +22,9 @@ class LearningRoute extends Component {
         console.log("data learning is", data);
         this.handleSetState(data);
       })
-     // .then(() => {
-       // this.getWord();
-      //})
+    // .then(() => {
+    // this.getWord();
+    //})
 
   }
 

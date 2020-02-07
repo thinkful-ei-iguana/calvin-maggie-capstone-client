@@ -5,21 +5,11 @@ import LearningService from "../../services/learning-service";
 import Button from "../Button/Button";
 import { Link } from "react-router-dom";
 // import Result from "./Result";
-import config from "../../config";
-import TokenService from "../../services/token-service";
-import WordsToPracice from "../Dashboard/WordsToPractice";
+// import config from "../../config";
+// import TokenService from "../../services/token-service";
+// import WordsToPracice from "../Dashboard/WordsToPractice";
 
 class Word extends Component {
-  state = {
-    currentWord: "",
-    isCorrect: null,
-    wordCorrectCount: 0,
-    wordIncorrectCount: 0,
-    totalScore: 0,
-    nextWord: "",
-    currentGuess: "",
-    answer: null
-  };
   // static contextType = ContentContext;
 
   // static defaultProps = {
@@ -31,12 +21,28 @@ class Word extends Component {
   constructor(props) {
     super(props);
 
-    this.state.currentWord = this.props.nextWord;
-    this.state.nextWord = this.props.nextWord;
-    this.state.wordCorrectCount = this.props.wordCorrectCount;
-    this.state.wordIncorrectCount = this.props.wordIncorrectCount;
-    this.state.totalScore = this.props.totalScore;
+    // this.state.currentWord = this.props.nextWord;
+    // this.state.nextWord = this.props.nextWord;
+    // this.state.wordCorrectCount = this.props.wordCorrectCount;
+    // this.state.wordIncorrectCount = this.props.wordIncorrectCount;
+    // this.state.totalScore = this.props.totalScore;
+    this.state = {
+      currentWord: "",
+      isCorrect: null,
+      wordCorrectCount: this.props.wordCorrectCount,
+      wordIncorrectCount: this.props.wordIncorrectCount,
+      totalScore: this.props.totalScore,
+      nextWord: this.props.nextWord,
+      currentGuess: "",
+      answer: null
+    };
+
+    this.tempSpace = {
+      wordCorrectCount: 0,
+      wordIncorrectCount: 0
+    }
   }
+
 
   handleInput = e => {
     e.preventDefault();
@@ -45,50 +51,55 @@ class Word extends Component {
     });
   };
 
+
+
+
   postGuessHandler = e => {
     e.preventDefault();
-
+    console.log('props is', this.props);
     const guess = this.state.currentGuess;
 
     LearningService.postGuess(guess).then(data => {
       console.log("data is post", data);
-      this.handleSetState(data);
-    });
-  };
+      // this.handleSetState(data);
+      this.tempSpace.wordCorrectCount = data.wordCorrectCount;
+      this.tempSpace.wordIncorrectCount = data.wordIncorrectCount;
 
-  handleSetState = data => {
-    this.setState({
-      isCorrect: data.isCorrect,
-      wordCorrectCount: data.wordCorrectCount,
-      wordIncorrectCount: data.wordIncorrectCount,
-      totalScore: data.totalScore,
-      nextWord: data.nextWord.original,
-      answer: data.answer,
-      currentWord: this.state.nextWord
-    });
-    console.log(
-      "what is this.state.nextword out of the raw res",
-      this.state.nextword
-    );
-  };
+      this.setState({
+        isCorrect: data.isCorrect,
+        totalScore: data.totalScore,
+        nextWord: data.nextWord,
+        answer: data.answer
+      });
 
-  handleNextWordClick = () => {
-    LearningService.getWord()
-      .then(data => {
+      if (this.state.isCorrect === true) {
         this.setState({
-          nextWord: data.nextWord,
-          wordCorrectCount: data.wordCorrectCount,
-          wordIncorrectCount: data.wordIncorrectCount,
-          totalScore: data.totalScore,
-          isCorrect: null,
-          // currentWord: this.state.nextWord
+          wordCorrectCount: this.state.wordCorrectCount + 1,  // incremeting here for interface, but also incrementing on the server-side and saving to DB so that the updated score persists
         })
-      })
+      } else {
+        this.setState({
+          wordIncorrectCount: this.state.wordIncorrectCount + 1,  // incremeting here for interface, but also incrementing on the server-side and saving to DB so that the updated score persists
+        })
+      }
+    });
+  };
+
+
+  setNextWordOnClick = () => {
+    //   LearningService.getWord()
+    console.log('on second click, this.state.nextword is', this.state.nextWord);
+    this.setState({
+      isCorrect: null,
+      wordCorrectCount: this.tempSpace.wordCorrectCount,
+      wordIncorrectCount: this.tempSpace.wordIncorrectCount
+    });
+
+    console.log('this state is', this.state)
   }
 
+
   render() {
-
-
+    console.log('uuuuugh', this.state.currentWord, this.state.nextWord);
     return (
       <section id="translate-page-container">
         <div className="learning_stats">
@@ -125,7 +136,12 @@ class Word extends Component {
         )}
 
         {this.state.isCorrect === null && (
-          <form id="translation-guess-form" onSubmit={this.postGuessHandler}>
+          <form id="translation-guess-form" onSubmit={(e) => {
+            this.setState({
+              currentWord: this.state.nextWord
+            });
+            return this.postGuessHandler(e);
+          }}>
             <h2>Translate the word:</h2> <span>{this.state.nextWord}</span>
             <label htmlFor="learn-guess-input">
               <p>What's the translation for this word?</p>
@@ -137,7 +153,7 @@ class Word extends Component {
               onChange={this.handleInput.bind(this)}
               id="learn-guess-input"
             ></input>
-            <Button id="button-show-form" type="submit">
+            <Button id="button-show-form" type="submit" onClick={this.updateCounts}>
               Submit your answer
             </Button>
           </form>
@@ -146,7 +162,7 @@ class Word extends Component {
           <Button
             id="button-show-form"
             type="submit"
-            onClick={this.handleNextWordClick}
+            onClick={this.setNextWordOnClick}
           >
             Try another word!
           </Button>
