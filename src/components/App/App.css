@@ -43,6 +43,25 @@ h1 {
 .login-page-submit {
   color: white;
   background-color: #c02f0e;
-  border: 3px outset silver;
-  font-family: "Shojumaru", cursive;  font-size: 16px;
+  font-size: 16px;
+  color: white;
+}
+
+@media screen and (max-width: 767px) {
+  .login-page-header {
+    height: 155px;
+    text-align: left;
+  }
+}
+@media screen and (max-width: 374px) {
+  .login-page-link {
+    font-size: x-large;
+    position: relative;
+    top: 50px;
+    color: white;
+  }
+}
+.login-page-link {
+  color: white;
+
 }
