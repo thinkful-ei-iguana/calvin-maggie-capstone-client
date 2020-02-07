@@ -1,31 +1,13 @@
 import React, { Component } from "react";
-// import ContentContext from "../../contexts/ContentContext";
-// import LearningService from '../../services/learning-service';
 import LearningService from "../../services/learning-service";
 import Button from "../Button/Button";
 import { Link } from "react-router-dom";
-// import Result from "./Result";
-// import config from "../../config";
-// import TokenService from "../../services/token-service";
-// import WordsToPracice from "../Dashboard/WordsToPractice";
 
 class Word extends Component {
-  // static contextType = ContentContext;
 
-  // static defaultProps = {
-  //   nextWord: "",
-  //   wordCorrectCount: 0,
-  //   wordIncorrectCount: 0,
-  //   totalScore: 0
-  // };
   constructor(props) {
     super(props);
 
-    // this.state.currentWord = this.props.nextWord;
-    // this.state.nextWord = this.props.nextWord;
-    // this.state.wordCorrectCount = this.props.wordCorrectCount;
-    // this.state.wordIncorrectCount = this.props.wordIncorrectCount;
-    // this.state.totalScore = this.props.totalScore;
     this.state = {
       currentWord: "",
       isCorrect: null,
@@ -43,7 +25,6 @@ class Word extends Component {
     }
   }
 
-
   handleInput = e => {
     e.preventDefault();
     this.setState({
@@ -51,17 +32,12 @@ class Word extends Component {
     });
   };
 
-
-
-
   postGuessHandler = e => {
     e.preventDefault();
-    console.log('props is', this.props);
+
     const guess = this.state.currentGuess;
 
     LearningService.postGuess(guess).then(data => {
-      console.log("data is post", data);
-      // this.handleSetState(data);
       this.tempSpace.wordCorrectCount = data.wordCorrectCount;
       this.tempSpace.wordIncorrectCount = data.wordIncorrectCount;
 
@@ -86,20 +62,15 @@ class Word extends Component {
 
 
   setNextWordOnClick = () => {
-    //   LearningService.getWord()
-    console.log('on second click, this.state.nextword is', this.state.nextWord);
     this.setState({
       isCorrect: null,
       wordCorrectCount: this.tempSpace.wordCorrectCount,
       wordIncorrectCount: this.tempSpace.wordIncorrectCount
     });
-
-    console.log('this state is', this.state)
   }
 
 
   render() {
-    console.log('uuuuugh', this.state.currentWord, this.state.nextWord);
     return (
       <section id="translate-page-container">
         <div className="learning_stats">
@@ -167,7 +138,6 @@ class Word extends Component {
             Try another word!
           </Button>
         )}
-
         <Link to="/" className="button-to-dashboard" type="submit">
           <div className="button-to-dashboard-text">Dashboard</div>
         </Link>

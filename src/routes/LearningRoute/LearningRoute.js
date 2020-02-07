@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import Word from "../../components/Learning/Word";
-// import config from "../../config";
 import LearningService from "../../services/learning-service";
 import ContentContext from "../../contexts/ContentContext";
-// import "../../routes/DashboardRoute/DashboardRoute.css";
 import "../../components/Learning/Learning.css";
 
 class LearningRoute extends Component {
@@ -19,13 +17,8 @@ class LearningRoute extends Component {
   componentDidMount() {
     LearningService.getWord()
       .then(data => {
-        console.log("data learning is", data);
         this.handleSetState(data);
-      })
-    // .then(() => {
-    // this.getWord();
-    //})
-
+      });
   }
 
   handleSetState = data => {
@@ -38,10 +31,7 @@ class LearningRoute extends Component {
   };
 
   getWord() {
-    console.log(
-      "this.state.wordcorrectcount in learning route is",
-      this.state.wordCorrectCount
-    );
+
     if (this.state.nextWord !== "") {
       return (
         <section>
