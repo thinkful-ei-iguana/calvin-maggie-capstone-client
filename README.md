@@ -8,7 +8,6 @@ The dashboard organizes a user's progress, showing all words that the user is le
 Beyond the dashboard, users encounter one word at a time, flashcard-style. Upon a user entering the translation of the current word into the text field, the app gives feedback about whether or not the user was correct. The more often a user correctly enters a translation for a given word, the less frequently they'll encounter it; likewise, a word that the user may not have memorized yet/continues to guess incorrectly will be shown more frequently.
 
 
-
 ## Visit our site
 [Live app](https://spaced-repetition-theta.now.sh/ "Spaced Repetition")
 
