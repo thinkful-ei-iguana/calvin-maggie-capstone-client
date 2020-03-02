@@ -9,9 +9,9 @@ Beyond the dashboard, users encounter one word at a time, flashcard-style. Upon 
 
 
 ## Visit our site
-[Live app](https://spaced-repetition-theta.now.sh/ "Spaced Repetition")
+[Live app](https://spaced-repetition-theta.now.sh/ "Maori in Motion")
 
-[GitHub repository (server)](https://github.com/thinkful-ei-iguana/calvin-maggie-capstone-server "Spaced Repetition server repo")
+[GitHub repository (server)](https://github.com/thinkful-ei-iguana/calvin-maggie-capstone-server "Maori in Motion server repo")
 
 ## Technology used
 
